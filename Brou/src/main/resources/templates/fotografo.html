@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it"  xmlns:th="http://www.thymleaf.org" xmlns="htmp://www.w3.org/1999/html">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Fotografo</title>
+
+  <!-- Custom fonts for this theme -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="/indexFunzionario/css/freelancer.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+  		  <b class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/Home}">Home</a>
+          </b>
+  		
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" th:text="${fotografo.nome + ' ' + fotografo.cognome}"   >Nome Cognome</a>
+      <form th:action="@{'/deleteFotografo'+ '/' + ${fotografo.id}}" method="post" th:object="${fotografo}" > <button> Elimina Fotografo </button>  </form>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"  th:href="@{'/linkCreaAlbum/' + ${fotografo.id}}">Crea Album</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+    <h2 class="navbar-brand js-scroll-trigger">A L B U M :</h2>
+   <ul color="white">
+    <li  th:each = "album : ${listaAlbum}">
+    <a  th:href="@{'/album'+ '/' + ${album.id}}" th:text="${album.nome}" style="color:white"> </a>
+   </ul>
+
+  </header>
+    
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; 2019 | Tommaso Gattari & Mykhaylo Boychuk</small>
+    </div>
+  </section>
+
+  <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+  <div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</body>
+</html>
